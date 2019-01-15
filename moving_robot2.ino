@@ -5,13 +5,14 @@
 #include <Adafruit_SSD1306.h>
 #include <RH_ASK.h>
 #include <SPI.h>
+#include <Adafruit_LSM9DS1.h>
+#include <Adafruit_Sensor.h>
 
 // Distance sensor global
 float distanceCm;
 
 void setup() {
   Serial.begin(9600);
-
   setupDisplay();
   setupMotor();
   setupComm();
@@ -23,8 +24,7 @@ void setup() {
 }
 
 void loop() {
-  distanceCm = calculateDistance();
-
   checkMessage();
+  distanceCm = calculateDistance();
 }
 

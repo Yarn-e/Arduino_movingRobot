@@ -21,8 +21,7 @@ void moveToLocationViaMessage(String message) {
 
   String xToMoveTo = message.substring((firstNumber) + 1, (firstNumber + 5));
   String yToMoveTo = message.substring((secondNumber) + 1, (secondNumber + 5));
-
-  moveToPosInGrid(xToMoveTo.toInt(), yToMoveTo.toInt());
+  //moveToPosInGrid(xToMoveTo.toInt(), yToMoveTo.toInt());
 }
 
 /**
@@ -67,6 +66,7 @@ void checkMessage() {
   uint8_t buflen = sizeof(buf);
   if (driver.recv(buf, &buflen)) // Non-blocking
   {
+    Serial.println("Message");
     //If we get a message, move to the new location
     moveToLocationViaMessage(buf);
   }
